@@ -57,13 +57,13 @@ Landing page profesional, moderna y completamente responsiva desarrollada para *
 - Sticky cuando se supera la sección Hero.
 
 #### Optimización Mobile:
-  tested_on:
-    - iPhone XR  
-    - Moto G  
-    - Resoluciones pequeñas (~720px)
-  improvements:
-    - Altura del hero.  
-    - Jerarquía visual y espaciados.  
-    - Tamaños de tipografía.  
-    - Optimización de imágenes.  
-    - Formulario adaptado a pantallas pequeñas.  
+    tested_on:
+      - iPhone XR  
+      - Moto G  
+      - Resoluciones pequeñas (~720px)
+    improvements:
+      - Altura del hero.  
+      - Jerarquía visual y espaciados.  
+      - Tamaños de tipografía.  
+      - Optimización de imágenes.  
+      - Formulario adaptado a pantallas pequeñas.  
