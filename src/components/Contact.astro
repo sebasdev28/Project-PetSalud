@@ -1,0 +1,196 @@
+---
+const { id = "contacto" } = Astro.props;
+---
+
+<section id={id} class="contact" data-reveal>
+  <div class="contact__wrap">
+    <div class="contact__head">
+      <h2 class="contact__title">Contáctanos</h2>
+      <p class="contact__lead">
+        Estamos listos para ayudarte con la salud de tu mascota.
+      </p>
+    </div>
+
+    <div class="contact__grid">
+      <!-- Columna mapa -->
+      <div class="contact__map">
+        <!-- Sustituye el src por tu código de Google Maps Embed -->
+        <iframe
+          class="contact__iframe"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31217.126416864263!2d-76.99056212568358!3d-12.033826099999988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c5f497bf7489%3A0xbc51c3630ca6d7c4!2sVeterinaria%20Pet%20Salud!5e0!3m2!1ses-419!2spe!4v1763046951598!5m2!1ses-419!2spe"
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+
+      <!-- Columna info -->
+      <div class="contact__info">
+        <h3 class="contact__info-title">Veterinaria Pet Salud</h3>
+        <ul class="contact__list">
+          <li class="contact__item">
+            <span class="contact__label">Dirección</span>
+            <span class="contact__value">
+              Av. Ejemplo 123, Distrito, Ciudad
+            </span>
+          </li>
+
+          <li class="contact__item">
+            <span class="contact__label">Teléfono</span>
+            <span class="contact__value">(01) 123 4567</span>
+          </li>
+
+          <li class="contact__item">
+            <span class="contact__label">WhatsApp</span>
+            <span class="contact__value">+51 999 999 999</span>
+          </li>
+
+          <li class="contact__item">
+            <span class="contact__label">Correo</span>
+            <span class="contact__value">contacto@petsalud.pe</span>
+          </li>
+
+          <li class="contact__item">
+            <span class="contact__label">Horario</span>
+            <span class="contact__value">
+              Lunes a sábado: 9:00 a.m. – 8:00 p.m. <br />
+              Domingos: 9:00 a.m. – 1:00 p.m.
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .contact {
+      width: 100%;
+     
+      padding-block: clamp(2.5rem, 6vw, 4rem);
+      padding-inline: 1rem;
+    }
+
+    .contact__wrap {
+      max-width: 1120px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact__head {
+      text-align: center;
+    }
+
+    .contact__title {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-weight: 800;
+      font-size: clamp(24px, 3vw, 32px);
+      color: #1e3a8a; /* azul titular */
+      margin: 0 0 0.5rem;
+    }
+
+    .contact__lead {
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 16px;
+      color: #4b5563;
+      margin: 0;
+    }
+
+    .contact__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1.75rem;
+      align-items: stretch;
+    }
+
+    /* MAPA */
+    .contact__map {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e1e7f5;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(15, 47, 116, 0.12);
+    }
+
+    .contact__iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      display: block;
+    }
+
+    /* INFO */
+    .contact__info {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #e1e7f5;
+      padding: 1.75rem 1.5rem;
+      box-shadow: 0 10px 24px rgba(15, 47, 116, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact__info-title {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      color: #0f2f74;
+      margin: 0 0 0.5rem;
+    }
+
+    .contact__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact__item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .contact__label {
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #6b7280;
+    }
+
+    .contact__value {
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 15px;
+      color: #111827;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .contact__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact__map,
+      .contact__info {
+        border-radius: 16px;
+      }
+
+      .contact__iframe {
+        min-height: 230px;
+      }
+
+      .contact__info {
+        padding: 1.5rem 1.25rem;
+      }
+    }
+  </style>
+</section>

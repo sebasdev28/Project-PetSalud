@@ -1,0 +1,313 @@
+---
+import Whatsapp from "./icons/Whatsapp.astro"
+---
+
+
+<header>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet"
+  />
+</header>
+
+<section class="hero-landing" aria-label="Presentación Petsalud" data-reveal>
+  <div class="hero-landing__inner">
+    <div class="hero-landing__grid">
+      <!-- IZQUIERDA: TEXTO -->
+      <div class="hero-landing__content">
+        <h1 class="hero-landing__title">La Salud de tu Mascota</h1>
+        <p class="hero-landing__subtitle">En Manos Expertas</p>
+        <p class="hero-landing__subsubtitle">
+          Tranquilidad para Ti, Bienestar para Ellos.
+        </p>
+
+        <!-- ACCIONES HERO -->
+        <div class="hero-landing__actions">
+          <a
+            href="https://wa.me/51945007284?text=Hola%20Pet%20Salud,%20quisiera%20agendar%20una%20cita%20para%20mi%20mascota."
+            class="hero-landing__btn hero-landing__btn--primary"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Whatsapp /> Agendar por WhatsApp
+          </a>
+
+          <a
+            href="/#servicios"
+            class="hero-landing__btn hero-landing__btn--ghost"
+          >
+            Ver servicios
+          </a>
+        </div>
+
+        <p class="hero-landing__trust">
+          Más de <strong>10 años</strong> cuidando a los engreídos de la familia.
+        </p>
+      </div>
+
+      <!-- DERECHA: IMAGEN -->
+      <figure class="hero-landing__image-wrapper">
+        <img
+          src="/Hero/heroimage.webp"
+          alt="Veterinario con mascota"
+          width="auto"
+          height="auto"
+          class="hero-landing__image"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </div>
+
+  <style>
+    /* ===== HERO con fondo desktop / mobile ===== */
+    .hero-landing {
+      --hero-bg-desktop: url("/Hero/herobackground.webp");
+      --hero-bg-mobile: url("/Hero/herobackground1.webp");
+
+      background-image: var(--hero-bg-desktop);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #66b9bf;
+
+      display: flex;
+      align-items: center;
+
+      --edge: calc(50vw - 50%);
+      margin-left: calc(-1 * var(--edge));
+      margin-right: calc(-1 * var(--edge));
+      padding-left: calc(var(--edge) + 1rem);
+      padding-right: calc(var(--edge) + 1rem);
+      padding-top: clamp(2rem, 5vw, 4rem);
+      padding-bottom: clamp(2rem, 5vw, 4rem);
+      min-height: 100vh;
+    }
+
+    .hero-landing__inner {
+      max-width: 1120px;
+      width: 100%;
+      margin-inline: auto;
+    }
+
+    .hero-landing__grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      justify-items: stretch;
+      gap: 3rem;
+    }
+
+    /* ===== TEXTO DESKTOP ===== */
+    .hero-landing__content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      text-align: left;
+      max-width: 540px;
+    }
+
+    .hero-landing__title {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      margin: 0;
+      color: #ff0000;
+    }
+
+    .hero-landing__subtitle {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 3.6vw, 3rem);
+      margin: 0;
+      color: #180ee1;
+    }
+
+    .hero-landing__subsubtitle {
+      font-family: "Inclusive Sans", system-ui, sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: #111827;
+      max-width: 40rem;
+      margin-top: 0.7rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ==== BOTONES HERO ==== */
+    .hero-landing__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.3rem;
+    }
+
+    .hero-landing__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.5rem;
+      border-radius: 999px;
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition:
+        background 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.2s ease,
+        transform 0.12s ease;
+      cursor: pointer;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+
+    .hero-landing__btn--primary {
+      background: #25d366;
+      color: #ffffff;
+      box-shadow: 0 10px 22px rgba(37, 211, 102, 0.4);
+    }
+
+    .hero-landing__btn--primary:hover {
+      background: #1ebe5a;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(37, 211, 102, 0.5);
+    }
+
+    .hero-landing__btn--ghost {
+      background: rgba(255, 255, 255, 0.9);
+      color: #180ee1;
+      border-color: rgba(24, 14, 225, 0.25);
+    }
+
+    .hero-landing__btn--ghost:hover {
+      background: #180ee1;
+      color: #ffffff;
+      box-shadow: 0 10px 22px rgba(24, 14, 225, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .hero-landing__trust {
+      margin-top: 0.4rem;
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 0.85rem;
+      color: #111827;
+    }
+
+    .hero-landing__trust strong {
+      font-weight: 800;
+      color: #180ee1;
+    }
+
+    /* ===== IMAGEN DESKTOP ===== */
+    .hero-landing__image-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: flex-end;
+      width: 350px;
+      height: 350px;
+    }
+
+    .hero-landing__image {
+      border-radius: 18px;
+      object-fit: contain;
+    }
+
+    /* ========= MOBILE ========= */
+    @media (max-width: 768px) {
+      .hero-landing {
+        background-image: var(--hero-bg-mobile);
+        padding-top: 96px; /* margen por el navbar fijo */
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .hero-landing__inner {
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .hero-landing__grid {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        gap: 1.75rem;
+      }
+
+      .hero-landing__content {
+        background: #ffffff;
+        width: 100%;
+        padding: 1.75rem 1.5rem 1.4rem;
+        text-align: center;
+        align-items: center;
+        max-width: none;
+        flex: 1;
+      }
+
+      .hero-landing__actions {
+        justify-content: center;
+      }
+
+      .hero-landing__subsubtitle {
+        margin-inline: auto;
+      }
+
+      .hero-landing__image-wrapper {
+        flex: 1;
+        width: 100%;
+        justify-content: center;
+        padding: 0 1.5rem 2rem;
+      }
+
+      .hero-landing__image {
+        width: 100%;
+        max-width: 420px;
+        border-radius: 18px;
+      }
+    }
+  </style>
+     <script is:inline>
+    (function () {
+      // Botón del hero
+      const heroBtn = document.querySelector(".hero-landing__btn--ghost");
+      if (!heroBtn) return;
+
+      heroBtn.addEventListener("click", (ev) => {
+        ev.preventDefault();
+
+        // 1) Intentar usar el link del navbar de "Servicios"
+        const navLink =
+          document.querySelector('.menu__link[href="/#servicios"]') ||
+          document.querySelector('.menu__link[href="#servicios"]');
+
+        if (navLink) {
+          // Dispara el mismo click que si el usuario
+          // tocara el menú → usa tu lógica de navbar
+          navLink.click();
+          return;
+        }
+
+        // 2) Fallback: scroll suave directo al id #servicios
+        const target = document.querySelector("#servicios");
+        if (!target) return;
+
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+    })();
+  </script>
+
+
+</section>

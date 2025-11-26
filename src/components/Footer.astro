@@ -1,0 +1,396 @@
+---
+interface Props {
+  id?: string;
+  brandName?: string;
+  tagline?: string;
+  phone?: string;
+  email?: string;
+  hoursTitle?: string;
+  hoursLines?: string[];
+  waMessage?: string;
+  socialTitle?: string;
+  facebook?: string;
+  instagram?: string;
+  tiktok?: string;
+}
+import TikTok from "./icons/TikTok.astro";
+import Whatsapp from "./icons/Whatsapp.astro";
+import Facebook from "./icons/Facebook.astro";
+import Instagram from "./icons/Instagram.astro";
+
+const {
+  id = "footer",
+  brandName = "Pet Salud",
+  tagline = "Cuidamos a quienes cuidan de ti.",
+  phone = "51945007284",
+  email = "correoejemplo@ejemplo.com",
+  hoursTitle = "Atención",
+  hoursLines = ["Lunes a Sábado · 9:00 a 23:00", "Domingos · 09:00 a 16:00 "],
+  waMessage = "¡Hola! Vengo desde la web y quiero más información.",
+  socialTitle = "Síguenos",
+  facebook = "https://www.facebook.com/ClinicaVet.PetSalud",
+  instagram = "ejemplo_instagram",
+  tiktok = "ejemplo_tiktok",
+} = Astro.props;
+
+const year = new Date().getFullYear();
+const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(waMessage)}`;
+const toUrl = (val: string, base: string) =>
+  !val ? "" : val.startsWith("http") ? val : base + val.replace(/^@/, "");
+
+// Usa tus URLs reales si las tienes:
+const fbLink = toUrl(facebook, "https://www.facebook.com/");
+const igLink = toUrl(instagram, "https://www.instagram.com/ejemplo_instagram/");
+const ttLink = toUrl(tiktok, "https://www.tiktok.com/@ejemplo_tiktok");
+---
+
+<header>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet"
+  />
+
+  <footer id={id} class="site-footer">
+    <div class="container">
+      <div class="foot">
+        <!-- Col 1: Marca -->
+        <div class="foot-col brand-col">
+          <div class="brand">
+            <span class="brand-logo" aria-hidden="true">
+              <img
+                src="/Logo/logodesktop.webp"
+                alt={`${brandName} Logo`}
+                width="80"
+                height="80"
+              />
+            </span>
+            <div class="brand-text">
+              <strong class="brand-name">{brandName}</strong>
+              <p></p>
+              {tagline && <small class="brand-tag">{tagline}</small>}
+            </div>
+          </div>
+          <p class="copyright">
+            © {year}
+            {brandName}. Todos los derechos reservados.
+          </p>
+        </div>
+
+        <!-- Col 2: Atención -->
+        <div class="foot-col">
+          <strong class="foot-heading">{hoursTitle}</strong>
+          {hoursLines.map((l) => <small class="muted">{l}</small>)}
+        </div>
+
+        <!-- Col 3: Contacto -->
+        <div class="foot-col">
+          <strong class="foot-heading">Contacto</strong>
+          <small class="muted">
+            <a href={`tel:+${phone}`} class="link"
+              >+{phone.replace(/^51/, "51 ")}</a
+            >
+          </small>
+          <small class="muted">
+            <a href={`mailto:${email}`} class="link">{email}</a>
+          </small>
+        </div>
+
+        <!-- Col 4: Redes -->
+        <div class="foot-col">
+          <strong class="foot-heading">{socialTitle}</strong>
+          <ul class="socials" role="list">
+            {
+              facebook && (
+                <li>
+                  <a
+                    href={fbLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    class="social-btn"
+                  >
+                    <Facebook />
+                  </a>
+                </li>
+              )
+            }
+            {
+              instagram && (
+                <li>
+                  <a
+                    href={igLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    class="social-btn"
+                  >
+                    <Instagram />
+                  </a>
+                </li>
+              )
+            }
+            {
+              tiktok && (
+                <li>
+                  <a
+                    href={ttLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="TikTok"
+                    class="social-btn"
+                  >
+                    <TikTok />
+                  </a>
+                </li>
+              )
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón flotante WhatsApp -->
+    <div class="wa-fab">
+      <a
+        href={waLink}
+        target="_blank"
+        rel="noopener"
+        aria-label="Chatea por WhatsApp"
+      >
+        <Whatsapp />
+        <span class="sr-only">WhatsApp</span>
+      </a>
+    </div>
+
+    <style>
+      :root {
+        --cg-cherry: #0004ff;
+        --cg-dark: #2b1b25;
+        --cg-rose: #fce4ec;
+        --cg-text: #1f1a1c;
+      }
+
+      /* Para que los anclajes no queden ocultos tras el navbar fijo */
+
+      [id] {
+        scroll-margin-top: calc(var(--nav-h) + 12px);
+      }
+      /* Header base (sigue siendo transparente) */
+      .site-nav {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 50;
+        background: transparent;
+      }
+
+      /* Cápsula interna que recibe el glass al scrollear/abrir menú */
+      .nav-shell {
+        border-radius: 14px;
+        transition:
+          background 0.25s ease,
+          border-color 0.25s ease,
+          box-shadow 0.25s ease,
+          backdrop-filter 0.25s ease;
+        padding: 8px 14px;
+      }
+
+      /* Solo aquí ponemos el efecto glass */
+      .nav-shell.glass {
+        background: rgba(17, 24, 39, 0.45);
+        backdrop-filter: saturate(160%) blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+      }
+      /* ===== Tokens fallback (si no existen globalmente) ===== */
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .container {
+        max-width: 1120px;
+        margin-inline: auto;
+        padding-inline: 1rem;
+       
+      }
+
+      .site-footer {
+        padding: 28px 0;
+        color: #4b3e44;
+        margin-top: 32px;
+        background:  #66b9bf;
+      }
+
+      .foot {
+        display: grid;
+        /* ✅ 4 columnas reales */
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 22px;
+        align-items: start;
+      }
+      @media (max-width: 960px) {
+        .foot {
+          grid-template-columns: 1fr;
+        }
+        .site-footer {
+          padding-bottom: 96px;
+        }
+      }
+
+      /* Marca */
+      .brand {
+        display: flex;
+     
+        font-family: "Elms Sans", sans-serif;
+      }
+      .brand-logo img {
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+        object-fit: contain;
+        display: block;
+      }
+      .brand-name {
+        font-size: 30px;
+        color: var(--cg-dark);
+        font-weight: bold;
+      }
+      .brand-tag {
+        color: #6a5a61;
+        font-size: smaller;
+        font-weight: 600;
+      }
+
+      /* Col genérica */
+      .foot-col {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .foot-heading {
+        margin: 0 0 6px;
+        font-size: 25px;
+        color: var(--cg-dark);
+        font-weight: bold;
+        font-family:"Elms Sans", sans-serif;
+      }
+      .muted {
+        color: #6a5a61;
+        font-size: smaller;
+
+        font-family: "Inclusive Sans", sans-serif;
+      }
+      .link {
+        color: #ff0000bd;
+        text-decoration: none;
+      }
+      .link:hover {
+        color: var(--cg-cherry);
+      }
+
+      .copyright {
+        margin: 10px 0 0;
+        font-size: smaller;
+        color: #7b6a72;
+        clear: both;
+
+        font-family: "Elms Sans", sans-serif;
+      }
+
+      /* Redes */
+      .socials {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 10px;
+      }
+      .social-btn {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        background: #fff;
+        color: var(--cg-cherry); /* <- los SVG heredan este color */
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease,
+          background 0.15s ease,
+          color 0.15s ease,
+          border-color 0.15s ease;
+      }
+      .social-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+        background: color-mix(in srgb, var(--cg-rose) 40%, white);
+        border-color: rgba(0, 0, 0, 0.12);
+      }
+      .social-btn :where(svg) {
+        width: 20px;
+        height: 20px;
+        display: block;
+      }
+
+      /* ===== FAB WhatsApp ===== */
+      .wa-fab {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 60;
+      }
+      .wa-fab a {
+        display: grid;
+        place-items: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #25d366, #39ff8d);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+        color: #072d12;
+        text-decoration: none;
+      }
+      .wa-fab a:hover {
+        transform: translateY(-2px) scale(1.03);
+      }
+      .wa-fab a:active {
+        transform: translateY(0) scale(0.98);
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .wa-fab a {
+          animation: pulse 2.2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+          0%,
+          100% {
+            box-shadow:
+              0 12px 26px rgba(0, 0, 0, 0.18),
+              0 0 0 0 rgba(57, 255, 141, 0.3);
+          }
+          50% {
+            box-shadow:
+              0 12px 26px rgba(0, 0, 0, 0.18),
+              0 0 0 12px rgba(57, 255, 141, 0);
+          }
+        }
+      }
+    </style>
+  </footer>
+</header>

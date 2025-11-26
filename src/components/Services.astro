@@ -1,0 +1,253 @@
+---
+const services = [
+  {
+    label: "Consulta Vet.",
+    href: "/ExploreServices/#explore-consulta",
+    icon: "stethoscope",
+  },
+  {
+    label: "Baño y corte",
+    href: "/ExploreServices/#explore-bano-corte",
+    icon: "bath",
+  },
+  {
+    label: "Vacunación",
+    href: "/ExploreServices/#explore-vacunacion",
+    icon: "vaccine",
+  },
+  {
+    label: "Desparasitación",
+    href: "/ExploreServices/#explore-desparasitacion",
+    icon: "insect",
+  },
+  {
+    label: "Esterilización",
+    href: "/ExploreServices/#explore-esterilizacion",
+    icon: "sterilization",
+  },
+];
+
+import Whatsapp from "./icons/Whatsapp.astro";
+import Bath from "./icons/Bath.astro";
+import Stethoscope from "./icons/Stethoscope.astro";
+import Sterilization from "./icons/Sterilization.astro";
+import Vaccine from "./icons/Vaccine.astro";
+import Insect from "./icons/Insect.astro";
+import Dental from "./icons/Dental.astro";
+
+const registry = {
+  wstp: Whatsapp,
+  stethoscope: Stethoscope,
+  bath: Bath,
+  sterilization: Sterilization,
+  vaccine: Vaccine,
+  insect: Insect,
+  tooth: Dental,
+} as const;
+
+const { id = "servicios" } = Astro.props;
+---
+
+<section id={id} class="svc" data-reveal>
+  <div class="svc__wrap">
+    <h2 class="svc__title">¿Qué podemos hacer por tu mascota hoy?</h2>
+
+    <ul class="svc__grid">
+      {
+        services.map((s) => {
+          const Cmp = registry[s.icon as keyof typeof registry] ?? null;
+
+          return (
+            <li class="svc-card">
+              <a href={s.href} class="svc-card__link">
+                <div class="svc-card__iconbox">
+                  {Cmp ? (
+                    <Cmp size={36} color="#0f2f74" />
+                  ) : (
+                    <img
+                      src={s.icon}
+                      alt=""
+                      width="36"
+                      height="36"
+                      loading="lazy"
+                      class="svc-card__icon"
+                    />
+                  )}
+                </div>
+
+                <span class="svc-card__text">{s.label}</span>
+                <span class="svc-card__arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  :root {
+    --ps-blue-900: #0f2f74;
+    --ps-blue-800: #1e3a8a;
+    --ps-blue-600: #2563eb;
+    --ps-accent: #ffb703;
+   
+    --ps-card: #ffffff;
+    --ps-card-bd: #0055ff;
+    --ps-shadow: 0 6px 14px rgba(16, 24, 40, 0.08);
+    --ps-radius: 18px;
+  }
+
+  /* SECCIÓN FULL-BLEED CON FONDO */
+  .svc {
+    --edge: calc(50vw - 50%);
+
+    margin-left: calc(-1 * var(--edge));
+    margin-right: calc(-1 * var(--edge));
+    padding-left: calc(var(--edge) + 1rem);
+    padding-right: calc(var(--edge) + 1rem);
+
+    background: #66b9bf;
+
+    border-radius: 0;
+    box-shadow: none;
+    max-width: none;
+
+    /* menos espacio arriba/abajo */
+    padding-block: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .svc__wrap {
+    max-width: 1120px;
+    margin-inline: auto;
+  }
+
+  .svc__title {
+    font-family: "Montserrat", system-ui, sans-serif;
+    font-weight: 800;
+    color: var(--ps-blue-800);
+    text-align: center;
+    font-size: clamp(22px, 3.5vw, 34px);
+    margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+  }
+
+  /* GRID: 5 columnas en desktop (una fila) */
+  .svc__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(1rem, 2.5vw, 1.25rem);
+  }
+
+  @media (max-width: 1024px) {
+    .svc__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .svc__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  /* TARJETA: icono arriba, texto en medio, flecha abajo derecha */
+  .svc-card__link {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* icono | texto | flecha */
+    row-gap: 0.75rem;
+
+    width: 100%;
+    max-height: 161px;
+    padding: 18px;
+    background: var(--ps-card);
+    border: 1px solid var(--ps-card-bd);
+    border-radius: 18px;
+    box-shadow: 0 4px 14px rgba(16, 24, 40, 0.06);
+
+    text-decoration: none;
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.22s ease,
+      border-color 0.22s ease,
+      background 0.22s ease;
+  }
+
+  .svc-card__iconbox {
+    align-self: start;
+    justify-self: flex-start;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    zoom: 1.5;
+    color: var(--ps-blue-800);
+  }
+
+  .svc-card__icon {
+    filter: brightness(0) saturate(100%) invert(12%) sepia(74%) saturate(2393%)
+      hue-rotate(199deg) brightness(94%) contrast(96%);
+    transition:
+      transform 0.25s ease,
+      filter 0.3s ease;
+  }
+
+  .svc-card__text {
+    align-self: center;
+    justify-self: flex-start;
+
+    font-family: "Open Sans", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ps-blue-900);
+    margin: 0; /* quitamos márgenes raros */
+  }
+
+  .svc-card__arrow {
+    align-self: center;
+    justify-self: flex-end;
+
+    font-weight: 800;
+    font-size: 24px;
+    color: var(--ps-blue-800);
+    transition:
+      transform 0.2s ease,
+      color 0.2s ease;
+  }
+
+  /* Hover */
+  .svc-card__link:hover {
+    transform: translateY(-3px);
+    border-color: #cfe0ff;
+    box-shadow: 0 12px 26px rgba(16, 24, 40, 0.12);
+  }
+  .svc-card__link:hover .svc-card__icon {
+    transform: scale(1.06);
+  }
+  .svc-card__link:hover .svc-card__arrow {
+    transform: translateX(6px);
+    color: var(--ps-blue-600);
+  }
+
+  .svc-card__link:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.35);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 500px) {
+    .svc-card__link {
+      min-height: 160px;
+    }
+    .svc-card__text {
+      font-size: 15px;
+    }
+    .svc-card__icon {
+      width: 32px;
+      height: 32px;
+    }
+  }
+</style>

@@ -1,0 +1,437 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import Whatsapp from "../components/icons/Whatsapp.astro";
+const { id = "explore-servicios" } = Astro.props;
+
+const services = [
+  {
+    id: "consulta",
+    label: "Consulta veterinaria",
+    image: "/Services/consulta-vet.webp",
+    intro:
+      "Evaluación clínica completa para detectar a tiempo cualquier problema de salud en tu mascota.",
+  },
+  {
+    id: "bano-corte",
+    label: "Baño y corte",
+    image: "/Services/bano-corte.webp",
+    intro:
+      "Baños medicados, corte de uñas y grooming para que tu compañero se sienta limpio y cómodo.",
+  },
+  {
+    id: "vacunacion",
+    label: "Vacunación",
+    image: "/Services/vacunacion.webp",
+    intro:
+      "Esquemas de vacunación personalizados según edad, estilo de vida y antecedentes.",
+  },
+  {
+    id: "desparasitacion",
+    label: "Desparasitación",
+    image: "/Services/desparasitacion.webp",
+    intro:
+      "Protección interna y externa frente a parásitos que pueden afectar su bienestar.",
+  },
+  {
+    id: "esterilizacion",
+    label: "Esterilización",
+    image: "/Services/esterilizacion.webp",
+    intro:
+      "Procedimientos seguros que ayudan a prevenir enfermedades y controlar la reproducción.",
+  },
+];
+
+const whatsappNumber = "51945007284";
+---
+
+<Layout
+  title="Propuesta para Pet Salud"
+  description="Pagina web hecha con mucho cariño para Pet Salud"
+>
+  <section id={id} class="explore" data-explore-root>
+    <div class="explore__wrap py-24">
+      <header class="explore__head">
+        <h2 class="explore__title">Explora nuestros servicios</h2>
+        <p class="explore__lead">
+          Conoce qué incluye cada servicio, elige una fecha y coordina tu cita por WhatsApp.
+        </p>
+      </header>
+
+      <div class="explore__panels">
+        {
+          services.map((s, index) => (
+            <article
+              id={`explore-${s.id}`}
+              data-panel={s.id}
+              class={`explore__panel ${index % 2 === 1 ? "explore__panel--reverse" : ""}`}
+            >
+              <div class="explore__panel-media">
+                <img
+                  src={s.image}
+                  alt={s.label}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <div class="explore__panel-body">
+                <h3 class="explore__panel-title">{s.label}</h3>
+                <p class="explore__panel-text">{s.intro}</p>
+
+                <ul class="explore__bullets">
+                  <li>Atención por médicos veterinarios con experiencia.</li>
+                  <li>Enfoque en bienestar, prevención y seguimiento.</li>
+                  <li>
+                    Explicación clara de cada paso y recomendaciones para casa.
+                  </li>
+                </ul>
+
+                <!-- Bloque de fecha + WhatsApp para cada servicio -->
+                <div class="explore__booking">
+                  <label class="explore__booking-label">
+                    Fecha de preferencia:
+                  </label>
+
+                  <input
+                    type="date"
+                    class="explore__booking-input"
+                    data-date-for={s.id}
+                  />
+
+                  <button
+                    type="button"
+                    class="explore__booking-btn"
+                    data-wa-service={s.label}
+                    data-service-id={s.id}
+                  >
+                    <Whatsapp />
+                    Consultar disponibilidad por WhatsApp
+                  </button>
+
+                  <p class="explore__booking-hint">
+                    Se abrirá WhatsApp con un mensaje listo sobre este servicio y la fecha elegida.
+                  </p>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <style>
+      .explore {
+        --ps-blue-900: #0f2f74;
+        --ps-blue-800: #1e3a8a;
+        --ps-blue-600: #2563eb;
+        --ps-bg-soft: #ffffff;
+
+        padding-block: clamp(2.75rem, 5vw, 3.5rem);
+        padding-inline: 1rem;
+        background: var(--ps-bg-soft);
+      }
+
+      .explore__wrap {
+        max-width: 1120px;
+        margin-inline: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+
+      .explore__head {
+        text-align: center;
+        max-width: 640px;
+        margin-inline: auto;
+      }
+
+      .explore__title {
+        font-family: "Montserrat", system-ui, sans-serif;
+        font-weight: 800;
+        font-size: clamp(22px, 3vw, 32px);
+        color: var(--ps-blue-900);
+        margin: 0 0 0.5rem;
+      }
+
+      .explore__lead {
+        font-family: "Open Sans", system-ui, sans-serif;
+        font-size: 15px;
+        color: #4b5563;
+        margin: 0;
+      }
+
+      /* ===== LISTA DE SECCIONES ===== */
+      .explore__panels {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+
+      .explore__panel {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 1.7rem 1.6rem;
+        box-shadow: 0 10px 24px rgba(15, 47, 116, 0.08);
+        border: 1px solid #e1e7f5;
+
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+        gap: 1.6rem;
+        align-items: stretch;
+      }
+
+      .explore__panel-media {
+        border-radius: 14px;
+        overflow: hidden;
+        background: #f3f4f6;
+      }
+
+      .explore__panel-media img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+
+      .explore__panel-body {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        justify-content: center;
+      }
+
+      .explore__panel--reverse .explore__panel-media {
+        order: 2;
+      }
+
+      .explore__panel--reverse .explore__panel-body {
+        order: 1;
+      }
+
+      .explore__panel-title {
+        font-family: "Montserrat", system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+        color: var(--ps-blue-900);
+        margin: 0;
+      }
+
+      .explore__panel-text {
+        font-family: "Open Sans", system-ui, sans-serif;
+        font-size: 15px;
+        color: #111827;
+        margin: 0;
+      }
+
+      .explore__bullets {
+        list-style: disc;
+        padding-left: 1.1rem;
+        margin: 0.25rem 0 1rem;
+        font-family: "Open Sans", system-ui, sans-serif;
+        font-size: 14px;
+        color: #4b5563;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      /* ==== BLOQUE BOOKING EN CADA PANEL ==== */
+      .explore__booking {
+        margin-top: 0.25rem;
+        padding: 0.85rem 0.9rem;
+        border-radius: 16px;
+        background: #f1f5ff;
+        border: 1px dashed rgba(37, 99, 235, 0.32);
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+        max-width: auto;
+      }
+
+      .explore__booking-label {
+        font-family: "Open Sans", system-ui, sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--ps-blue-800);
+      }
+
+      .explore__booking-input {
+        width: 100%;
+        border-radius: 999px;
+        border: 1px solid #d0ddff;
+        padding: 0.45rem 0.9rem;
+        font-family: "Open Sans", system-ui, sans-serif;
+        font-size: 14px;
+        color: #111827;
+        outline: none;
+        transition:
+          border-color 0.18s ease,
+          box-shadow 0.18s ease;
+      }
+
+      .explore__booking-input:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18);
+      }
+
+      .explore__booking-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        border: none;
+        padding: 0.55rem 1.3rem;
+        background: var(--ps-blue-800);
+        color: #ffffff;
+        font-family: "Open Sans", system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          background 0.18s ease,
+          transform 0.12s ease,
+          box-shadow 0.18s ease;
+      }
+
+      .explore__booking-btn:hover {
+        background: var(--ps-blue-600);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 18px rgba(37, 99, 235, 0.32);
+      }
+
+      .explore__booking-hint {
+        font-family: "Open Sans", system-ui, sans-serif;
+        font-size: 12px;
+        color: #4b5563;
+        margin: 0;
+      }
+
+      /* resaltado cuando venimos con hash */
+      .explore__panel.is-highlight {
+        box-shadow:
+          0 0 0 3px rgba(37, 99, 235, 0.45),
+          0 18px 40px rgba(15, 47, 116, 0.18);
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 900px) {
+        .explore__panel {
+          grid-template-columns: 1fr;
+          padding: 1.4rem 1.2rem;
+        }
+
+        .explore__panel-media,
+        .explore__panel-body {
+          order: initial;
+        }
+
+        .explore__panel-media {
+          max-height: 260px;
+        }
+
+        .explore__panel-media img {
+          object-fit: cover;
+        }
+
+        .explore__booking {
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .explore {
+          padding-inline: 0.75rem;
+        }
+      }
+    </style>
+
+    <script is:inline>
+      (function () {
+        const root = document.querySelector("[data-explore-root]");
+        if (!root) return;
+
+        const phone = "51945007284";
+
+        function formatDate(value) {
+          if (!value) return null;
+          const d = new Date(value + "T00:00:00");
+          if (Number.isNaN(d.getTime())) return null;
+
+          return d.toLocaleDateString("es-PE", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+          });
+        }
+
+        // Manejo de scroll por hash (ya lo tenías)
+        const prefersReduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function getServiceFromHash() {
+          const hash = window.location.hash || "";
+          const match = hash.match(/^#explore-servicios(?::(.+))?$/);
+          return match && match[1] ? match[1] : null;
+        }
+
+        function scrollToService(id) {
+          if (!id) return;
+          const panel = root.querySelector('[data-panel="' + id + '"]');
+          if (!panel) return;
+
+          const headerOffset = 96;
+          const rect = panel.getBoundingClientRect();
+          const targetY = window.scrollY + rect.top - headerOffset;
+
+          window.scrollTo({
+            top: targetY,
+            behavior: prefersReduced ? "auto" : "smooth",
+          });
+
+          panel.classList.add("is-highlight");
+          setTimeout(() => panel.classList.remove("is-highlight"), 1200);
+        }
+
+        const initial = getServiceFromHash();
+        if (initial) scrollToService(initial);
+
+        window.addEventListener("hashchange", () => {
+          const s = getServiceFromHash();
+          if (s) scrollToService(s);
+        });
+
+        // WhatsApp por servicio
+        const buttons = root.querySelectorAll("[data-wa-service]");
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const label = btn.getAttribute("data-wa-service") || "servicio";
+            const serviceId = btn.getAttribute("data-service-id") || "";
+            const input = root.querySelector(
+              '[data-date-for="' + serviceId + '"]'
+            );
+
+            const raw = input?.value || "";
+            const fecha = formatDate(raw);
+
+            let text;
+            if (fecha) {
+              text =
+                `Hola Pet Salud, quisiera agendar una cita para el servicio de ${label} ` +
+                `para el ${fecha} (horario a coordinar). ¿Tienen disponibilidad ese día?`;
+            } else {
+              text =
+                `Hola Pet Salud, quisiera agendar una cita para el servicio de ${label}. ` +
+                `¿Qué fechas tienen disponibles?`;
+            }
+
+            const url =
+              "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
+            window.open(url, "_blank");
+          });
+        });
+      })();
+    </script>
+  </section>
+</Layout>

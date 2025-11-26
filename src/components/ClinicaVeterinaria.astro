@@ -1,0 +1,400 @@
+---
+import Whatsapp from "./icons/Whatsapp.astro"
+---
+
+
+<section id="clinica-veterinaria" class="clinic" data-reveal>
+  <div class="clinic__wrap">
+    <header class="clinic__head">
+      <p class="clinic__eyebrow">CLÍNICA VETERINARIA</p>
+      <h2 class="clinic__title">
+        Cuidamos a tu mascota con equipos especializados
+      </h2>
+      <p class="clinic__lead">
+        En PetSalud realizamos ecografías y controles en un ambiente seguro y
+        acompañado, para que tú y tu engreído se sientan tranquilos.
+      </p>
+    </header>
+
+    <div class="clinic__card" data-reveal="flash">
+      <div class="clinic__grid">
+        <!-- TEXTO -->
+        <div class="clinic__content">
+          <p class="clinic__tag">Ecografías • Controles • Diagnósticos</p>
+
+          <h3 class="clinic__subtitle">
+            Atención cercana y diagnósticos precisos
+          </h3>
+
+          <ul class="clinic__list">
+            <li>
+              <strong>Ecografías y exámenes complementarios</strong> realizados
+              por médicos veterinarios.
+            </li>
+            <li>
+              <strong>Acompañamiento a los tutores</strong> durante todo el
+              procedimiento.
+            </li>
+            <li>
+              <strong>Equipos actualizados</strong> para un diagnóstico rápido
+              y confiable.
+            </li>
+            <li>
+              <strong>Ambiente cómodo y tranquilo</strong> para reducir el
+              estrés de tu mascota.
+            </li>
+          </ul>
+
+          <p class="clinic__note">
+            Elige una <strong>fecha de preferencia</strong> y te ayudamos a coordinar tu cita por WhatsApp.
+          </p>
+
+          <!-- BLOQUE DE AGENDA -->
+          <div class="clinic__booking">
+            <label class="clinic__booking-label" for="clinic-date">
+              Fecha de preferencia:
+            </label>
+
+            <input
+              id="clinic-date"
+              class="clinic__booking-input"
+              type="date"
+            />
+
+            <button
+              type="button"
+              class="clinic__booking-btn"
+              data-wa-clinic
+            >
+             <Whatsapp /> 
+              Quiero agendar una cita
+             
+            </button>
+
+            <p class="clinic__booking-hint">
+              Abriremos WhatsApp para consultar disponibilidad en la fecha elegida.
+            </p>
+          </div>
+        </div>
+
+        <!-- IMAGEN DE LA CLÍNICA -->
+        <figure class="clinic__media">
+          <img
+            src="/Clinica/ClinicaVeterinaria.webp"
+            alt="Ecografía a una mascota en la clínica veterinaria PetSalud"
+            loading="lazy"
+            decoding="async"
+            class="clinic__image"
+          />
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .clinic {
+      --ps-red: #ec0707;
+      --ps-blue: #180ee1;
+      
+      --ps-text-main: #111827;
+
+      padding-block: clamp(3rem, 6vw, 4rem);
+      padding-inline: 1rem;
+      
+    }
+
+    .clinic__wrap {
+      max-width: 1120px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .clinic__head {
+      text-align: center;
+      max-width: 720px;
+      margin-inline: auto;
+    }
+
+    .clinic__eyebrow {
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ps-blue);
+      margin: 0 0 0.4rem;
+    }
+
+    .clinic__title {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-weight: 800;
+      font-size: clamp(22px, 3vw, 32px);
+      color: var(--ps-red);
+      margin: 0 0 0.6rem;
+    }
+
+    .clinic__lead {
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 15px;
+      color: var(--ps-text-main);
+      margin: 0;
+    }
+
+    /* CARD principal */
+    .clinic__card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 2rem 2.2rem;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .clinic__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .clinic__content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .clinic__tag {
+      align-self: flex-start;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: #e0ecff;
+      color: var(--ps-blue);
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .clinic__subtitle {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--ps-blue);
+      margin: 0;
+      position: relative;
+      padding-top: 0.4rem;
+    }
+
+    .clinic__subtitle::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--ps-red);
+    }
+
+    .clinic__list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 14px;
+      color: var(--ps-text-main);
+    }
+
+    .clinic__list li {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    .clinic__list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--ps-blue);
+      box-shadow: 0 0 0 3px rgba(24, 14, 225, 0.12);
+    }
+
+    .clinic__list strong {
+      font-weight: 800;
+    }
+
+    .clinic__note {
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 14px;
+      color: #4b5563;
+      margin: 0.5rem 0 0.35rem;
+    }
+
+    /* ==== BLOQUE BOOKING ==== */
+    .clinic__booking {
+      margin-top: 0.4rem;
+      padding: 0.85rem 0.9rem;
+      border-radius: 16px;
+      background: #f1f5ff;
+      border: 1px dashed rgba(24, 14, 225, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-width: auto;
+    }
+
+    .clinic__booking-label {
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ps-blue);
+    }
+
+    .clinic__booking-input {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid #d0ddff;
+      padding: 0.45rem 0.9rem;
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 14px;
+      color: #111827;
+      outline: none;
+      transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+    }
+
+    .clinic__booking-input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18);
+    }
+
+    .clinic__booking-btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 999px;
+      border: none;
+      padding: 0.55rem 1.3rem;
+      background: var(--ps-blue);
+      color: #ffffff;
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition:
+        background 0.18s ease,
+        transform 0.12s ease,
+        box-shadow 0.18s ease;
+    }
+
+    .clinic__booking-btn:hover {
+      background: #1e34c5;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(24, 14, 225, 0.28);
+    }
+
+    .clinic__booking-hint {
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 12px;
+      color: #4b5563;
+      margin: 0;
+    }
+
+    .clinic__media {
+      margin: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.2);
+      background: #ffffff;
+    }
+
+    .clinic__image {
+      width: 100%;
+      height: 100%;
+      max-height: 420px;
+      display: block;
+      object-fit: cover;
+    }
+
+    @media (max-width: 900px) {
+      .clinic__card {
+        padding: 1.6rem 1.5rem;
+      }
+
+      .clinic__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .clinic__media {
+        max-width: 480px;
+        justify-self: center;
+      }
+
+      .clinic__booking {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .clinic {
+        padding-inline: 0.75rem;
+      }
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      const root = document.querySelector("#clinica-veterinaria");
+      if (!root) return;
+
+      const phone = "51945007284";
+      const input = root.querySelector("#clinic-date");
+      const btn = root.querySelector("[data-wa-clinic]");
+      if (!input || !btn) return;
+
+      function formatDate(value) {
+        if (!value) return null;
+        const d = new Date(value + "T00:00:00");
+        if (Number.isNaN(d.getTime())) return null;
+
+        const fecha = d.toLocaleDateString("es-PE", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        });
+
+        return fecha;
+      }
+
+      btn.addEventListener("click", () => {
+        const raw = input.value;
+        const fecha = formatDate(raw);
+
+        let text;
+        if (fecha) {
+          text =
+            `Hola Pet Salud, quisiera agendar una ecografía o control para mi mascota ` +
+            `para el ${fecha} (horario a coordinar). ¿Tienen disponibilidad ese día?`;
+        } else {
+          text =
+            "Hola Pet Salud, quisiera agendar una ecografía o control para mi mascota. " +
+            "¿Qué fechas tienen disponibles?";
+        }
+
+        const url =
+          "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
+        window.open(url, "_blank");
+      });
+    })();
+  </script>
+</section>

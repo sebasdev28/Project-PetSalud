@@ -1,0 +1,377 @@
+---
+const { id = "navbar" } = Astro.props;
+const alt = "Logo de Pet Salud";
+const desktopLogo = "/Logo/logodesktop.webp";
+const mobileLogo = "/Logo/logomobile.webp";
+---
+
+<header id={id} class="site-nav" data-nav>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet"
+  />
+  <div class="nav-shell">
+    <nav class="bg-transparent border-0">
+      <div
+        class="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between p-4"
+      >
+        <!-- Botón hamburguesa (solo móvil) -->
+        <button
+          class="menu-toggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <!-- LOGO -->
+        <!-- LOGO -->
+        <a
+          href="/"
+          class="flex items-center gap-3 brand"
+          aria-label="Ir al inicio"
+        >
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset={`${mobileLogo} 1x, ${mobileLogo} 2x`}
+            />
+            <img
+              src={desktopLogo}
+              alt={alt}
+              class="brand__img"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
+
+          <!-- Texto de la veterinaria -->
+          <div class="brand__text">
+            <span class="brand__name">Pet Salud</span>
+            <span class="brand__tag">Clínica Veterinaria Especializada</span>
+          </div>
+        </a>
+
+        <!-- Menú (sin desplegables) -->
+        <div class="nav-panel" id="navbar-default" data-menu>
+          <ul class="menu">
+            <li><a href="/#nosotros" class="menu__link">Nosotros</a></li>
+            <li><a href="/#servicios" class="menu__link">Servicios</a></li>
+            <li>
+              <a href="/#clinica-veterinaria" class="menu__link"
+                >Clínica Veterinaria</a
+              >
+            </li>
+            <li><a href="/#contacto" class="menu__link">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <style>
+    /* ===== Paleta Petsalud ===== */
+    :root {
+      --ps-primary-600: #2563eb; /* hover */
+      --ps-primary-700: #1d4ed8;
+      --ps-primary-800: #1e3a8a; /* texto base */
+      --ps-neutral-900: #111827;
+      --nav-h: 64px; /* fallback */
+    }
+
+    /* Deja margen de scroll a secciones ancladas */
+    :global([id]) {
+      scroll-margin-top: var(--nav-h);
+    }
+    /* Texto junto al logo */
+    .brand {
+      text-decoration: none;
+    }
+
+    .brand__text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand__name {
+      font-family: "Elms Sans", system-ui, sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem; /* ~20px */
+      color: var(--ps-primary-800);
+    }
+
+    .brand__tag {
+      font-family: "Inclusive Sans", system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 0.72rem; /* ~12px */
+      color: #475569; /* slate-600 */
+      letter-spacing: 0.2px;
+      margin-top: 2px;
+    }
+
+    /* En móvil podemos ocultar el tagline para dejar más aire */
+    @media (max-width: 768px) {
+      .brand__tag {
+        display: none;
+      }
+      .brand__name {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* ===== Header base + transición para ocultar al scrollear ===== */
+    .site-nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      background: #ffffff;
+      transition: transform 0.3s ease-out;
+      border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+    }
+    .site-nav.nav-hidden {
+      transform: translateY(calc(-1 * var(--nav-h)));
+    }
+
+    /* ===== Cápsula con glass ===== */
+    .nav-shell {
+      border-radius: 14px;
+      padding: 8px 14px;
+      font-family: "Inclusive Sans", sans-serif;
+
+      transition:
+        background 0.25s,
+        border-color 0.25s,
+        box-shadow 0.25s,
+        backdrop-filter 0.25s;
+    }
+    .nav-shell.glass {
+      background: rgba(255, 255, 255, 0.72);
+      -webkit-backdrop-filter: saturate(160%) blur(10px);
+      backdrop-filter: saturate(160%) blur(10px);
+      border: 1px solid rgba(17, 24, 39, 0.06);
+      box-shadow: 0 6px 24px rgba(17, 24, 39, 0.06);
+    }
+
+    /* ===== Logo ===== */
+    .brand__img {
+      height: 70px;
+      width: auto;
+      display: flex;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .brand__img {
+        height: 54px;
+      }
+    }
+
+    /* ===== Botón hamburguesa ===== */
+    .menu-toggle {
+      display: none;
+      width: 26px;
+      height: 18px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+    .menu-toggle span {
+      width: 100%;
+      height: 2px;
+      background: var(--ps-neutral-900);
+      border-radius: 10px;
+      transition: all 0.3s;
+    }
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translateY(7px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-7px);
+    }
+
+    /* ===== Panel de menú ===== */
+    .nav-panel {
+      display: flex;
+      align-items: center;
+    }
+    .menu {
+      display: flex;
+      gap: 1.25rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--ps-primary-800);
+    }
+    .menu__link {
+      display: block;
+      font-size: medium;
+      padding: 0.5rem 0.75rem;
+      text-decoration: none;
+      font-weight: 700;
+      color: inherit;
+      transition: color 0.2s ease;
+    }
+    /* Hover simple (solo color) */
+    .menu__link:hover {
+      color: var(--ps-primary-600);
+    }
+
+    /* ===== Responsive: menú bajo el header ===== */
+    @media (max-width: 768px) {
+      :global([id]) {
+        scroll-margin-top: var(--nav-h);
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      .nav-panel {
+        position: absolute;
+        top: var(--nav-h);
+        left: 0;
+        width: 100%;
+        background: #fff;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        transform: translateY(-150%);
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          transform 0.35s ease,
+          opacity 0.35s ease;
+        justify-content: center;
+      }
+      .nav-panel.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .menu {
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.75rem 0;
+      }
+      .menu__link {
+        text-align: center;
+      }
+    }
+  </style>
+  <!-- ===== JS: altura + glass + hide on scroll + toggle ===== -->
+  <script is:inline>
+    const header =
+      document.querySelector(".site-nav") ||
+      document.querySelector("header.nav");
+    const shell = document.querySelector(".nav-shell");
+    const menu = document.querySelector("[data-menu]");
+    const btn = document.querySelector("[data-menu-toggle]");
+
+    // Altura nav -> CSS var
+    const setNavHeight = () => {
+      if (!header) return;
+      const h = header.getBoundingClientRect().height;
+      document.documentElement.style.setProperty(
+        "--nav-h",
+        `${Math.ceil(h)}px`
+      );
+    };
+    setNavHeight();
+    window.addEventListener("resize", setNavHeight);
+    window.addEventListener("load", setNavHeight);
+
+    // Toggle menú (móvil)
+    const toggleMenu = () => {
+      const opened = menu.classList.toggle("open");
+      btn?.classList.toggle("active", opened);
+      if (btn) btn.setAttribute("aria-expanded", String(opened));
+      shell?.classList.toggle("glass", opened || window.scrollY > 8);
+    };
+    btn?.addEventListener("click", toggleMenu);
+
+    // ---- Ocultar/mostrar con scroll ----
+    let lastScrollY = window.scrollY;
+    const scrollThreshold = 100;
+    let suppressAutoHide = false;
+
+    const apply = () => {
+      const y = window.scrollY;
+      const opened = menu?.classList.contains("open");
+
+      // Glass
+      shell?.classList.toggle("glass", y > 8 || opened);
+
+      if (suppressAutoHide) {
+        lastScrollY = y;
+        return;
+      }
+      if (!header || opened) {
+        lastScrollY = y;
+        return;
+      }
+
+      if (y > lastScrollY && y > scrollThreshold) {
+        header.classList.add("nav-hidden");
+      } else if (y < lastScrollY) {
+        header.classList.remove("nav-hidden");
+      }
+      lastScrollY = y;
+    };
+
+    apply();
+    window.addEventListener("scroll", apply, { passive: true });
+
+    // Cierra el menú si pasa a desktop
+    const mm = window.matchMedia("(min-width: 769px)");
+    const handleMatch = () => {
+      if (mm.matches) {
+        menu?.classList.remove("open");
+        btn?.classList.remove("active");
+        btn?.setAttribute("aria-expanded", "false");
+        shell?.classList.toggle("glass", window.scrollY > 8);
+      }
+    };
+    mm.addEventListener?.("change", handleMatch);
+
+    // Mantener navbar visible al navegar por anclas y cerrar menú móvil
+    const links = document.querySelectorAll(".menu__link");
+    links.forEach((a) => {
+      a.addEventListener("click", (ev) => {
+        const href = a.getAttribute("href") || "";
+        if (!href.includes("#")) return;
+        const id = href.slice(href.indexOf("#"));
+        const target = document.querySelector(id);
+        if (!target) return;
+
+        ev.preventDefault();
+        suppressAutoHide = true;
+        header.classList.remove("nav-hidden");
+        shell?.classList.add("glass");
+        menu?.classList.remove("open");
+        btn?.classList.remove("active");
+        btn?.setAttribute("aria-expanded", "false");
+
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        let timer = setTimeout(() => {
+          suppressAutoHide = false;
+        }, 900);
+        const onScroll = () => {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            suppressAutoHide = false;
+            window.removeEventListener("scroll", onScroll);
+          }, 200);
+        };
+        window.addEventListener("scroll", onScroll, { passive: true });
+      });
+    });
+  </script>
+</header>

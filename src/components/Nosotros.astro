@@ -1,0 +1,335 @@
+<section id="nosotros" class="about" data-reveal>
+  <div class="about__wrap">
+    <!-- CABECERA -->
+    <header class="about__head">
+      <p class="about__eyebrow">NOSOTROS</p>
+      <h2 class="about__title">Un equipo que acompaña a tu familia peluda</h2>
+      <p class="about__lead">
+        En PetSalud combinamos experiencia, tecnología y un trato cercano
+        para que cada visita sea tranquila tanto para tu mascota como para ti.
+      </p>
+    </header>
+
+    <!-- TEXTO + CARRUSEL -->
+    <div class="about__layout">
+      <div class="about__content">
+        <h3 class="about__subtitle">Cuidamos como si fueran nuestros</h3>
+        <ul class="about__list">
+          <li>Veterinarios con años de experiencia en medicina preventiva y clínica.</li>
+          <li>Equipo comprometido en explicar cada paso y resolver tus dudas.</li>
+          <li>Ambientes pensados para reducir el estrés de perros y gatos.</li>
+          <li>Acompañamiento en todo el proceso: desde el chequeo hasta el alta.</li>
+        </ul>
+      </div>
+
+      <!-- CARRUSEL -->
+      <figure class="about__carousel" data-about-carousel>
+        <div class="about__slides">
+          <!-- Slide 1 -->
+          <div class="about__slide is-active">
+            <img
+              src="/Nosotros/image1.webp"
+              alt="Equipo veterinario atendiendo a una mascota en PetSalud"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="about__slide">
+            <img
+              src="/Nosotros/image2.webp"
+              alt="Veterinario revisando a un perrito sobre la camilla"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="about__slide">
+            <img
+              src="/Nosotros/image3.webp"
+              alt="Tutora y mascota recibiendo indicaciones en PetSalud"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+
+        <!-- Dots -->
+        <div class="about__dots">
+          <button class="about__dot is-active" type="button" data-about-dot="0" aria-label="Ver foto 1"></button>
+          <button class="about__dot" type="button" data-about-dot="1" aria-label="Ver foto 2"></button>
+          <button class="about__dot" type="button" data-about-dot="2" aria-label="Ver foto 3"></button>
+        </div>
+      </figure>
+    </div>
+  </div>
+
+  <style>
+    .about {
+      --ps-red: #ec0707;
+      --ps-blue: #180ee1;
+      --ps-text-main: #111827;
+
+      padding-block: clamp(3rem, 6vw, 4rem);
+      padding-inline: 1rem;
+
+    
+    }
+
+    .about__wrap {
+      max-width: 1120px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .about__head {
+      text-align: center;
+      max-width: 720px;
+      margin-inline: auto;
+    }
+
+    .about__eyebrow {
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ps-blue);
+      margin: 0 0 0.4rem;
+    }
+
+    .about__title {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-weight: 800;
+      font-size: clamp(22px, 3vw, 32px);
+      color: var(--ps-red);
+      margin: 0 0 0.6rem;
+    }
+
+    .about__lead {
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 15px;
+      color: var(--ps-text-main);
+      margin: 0;
+    }
+
+    .about__layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about__content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .about__subtitle {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--ps-blue);
+      margin: 0;
+      position: relative;
+      padding-top: 0.4rem;
+    }
+
+    .about__subtitle::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      border-radius: 999px;
+      background: var(--ps-red);
+    }
+
+    .about__list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-family: "Open Sans", system-ui, sans-serif;
+      font-size: 14px;
+      color: var(--ps-text-main);
+    }
+
+    .about__list li {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    .about__list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--ps-blue);
+      box-shadow: 0 0 0 3px rgba(24, 14, 225, 0.12);
+    }
+
+    /* ==== CARRUSEL ==== */
+    .about__carousel {
+      margin: 0;
+      border-radius: 20px;
+      padding: 0.75rem;
+      background: linear-gradient(135deg, #eff6ff, #fee2e2);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .about__slides {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #ffffff;
+      height: 320px;
+    }
+
+    .about__slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: scale(1.02);
+      transition:
+        opacity 0.5s ease-out,
+        transform 0.5s ease-out;
+    }
+
+    .about__slide.is-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .about__slide img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .about__dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .about__dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(15, 23, 42, 0.25);
+      cursor: pointer;
+      padding: 0;
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        width 0.2s ease;
+    }
+
+    .about__dot.is-active {
+      background: var(--ps-blue);
+      width: 20px;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .about__layout {
+        grid-template-columns: 1fr;
+      }
+
+      .about__carousel {
+        max-width: 480px;
+        
+      }
+       .about {
+        padding-inline: 0.75rem;
+      }
+
+      .about__slides {
+        height: 260px;
+      }
+    }
+ 
+    
+  </style>
+
+  <script is:inline>
+    (function () {
+      const root = document.querySelector("[data-about-carousel]");
+      if (!root) return;
+
+      const slides = Array.from(root.querySelectorAll(".about__slide"));
+      const dots = Array.from(root.querySelectorAll(".about__dot"));
+      if (!slides.length) return;
+
+      let current = 0;
+      let timer = null;
+      const intervalMs = 5000;
+
+      const prefersReduced =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function showSlide(index) {
+        slides.forEach((s, i) =>
+          s.classList.toggle("is-active", i === index)
+        );
+        dots.forEach((d, i) =>
+          d.classList.toggle("is-active", i === index)
+        );
+        current = index;
+      }
+
+      function next() {
+        const nextIndex = (current + 1) % slides.length;
+        showSlide(nextIndex);
+      }
+
+      function startAuto() {
+        if (prefersReduced) return;
+        stopAuto();
+        timer = setInterval(next, intervalMs);
+      }
+
+      function stopAuto() {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+      }
+
+      // Dots click
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const idx = parseInt(dot.getAttribute("data-about-dot") || "0", 10);
+          showSlide(idx);
+          startAuto();
+        });
+      });
+
+      // Pausa al pasar el mouse
+      root.addEventListener("mouseenter", stopAuto);
+      root.addEventListener("mouseleave", startAuto);
+
+      // Init
+      showSlide(0);
+      startAuto();
+    })();
+  </script>
+</section>
