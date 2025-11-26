@@ -1,46 +1,69 @@
-# Astro Starter Kit: Basics
+# 🐾 PetSalud – Landing Page
 
-```sh
-npm create astro@latest -- --template basics
-```
+Landing page profesional, moderna y completamente responsiva desarrollada para **PetSalud**, una clínica veterinaria especializada con más de 10 años cuidando la salud y bienestar de las mascotas y acompañando a sus tutores con atención cercana y confiable.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 Tecnologías Utilizadas
 
-## 🚀 Project Structure
+- Astro – Framework principal basado en componentes.
+- TypeScript – Tipado para componentes Astro.
+- HTML5 & CSS3 – Maquetación base.
+- TailwindCSS (si se incluye en secciones específicas) – Estilos utilitarios.
+- JavaScript – Interacciones (navbar dinámica, scroll suave, acciones de WhatsApp).
+- Netlify – Despliegue final.
+- Google Fonts – Tipografías personalizadas.
+- Responsive Design – Optimización completa para móvil, tablet y desktop.
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🎨 Características Principales
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+#### Sección Hero:
+- “La salud de tu mascota en manos expertas”.
+- Subtítulo: “Tranquilidad para ti, bienestar para ellos”.
+- Botón de agendar por WhatsApp.
+- Botón de ver servicios.
+- Más de 10 años de experiencia como mensaje de respaldo.
+- Diseño mobile-first adaptado a pruebas reales en dispositivos.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+#### Sección Nosotros:
+- “Un equipo que acompaña a tu familia peluda”.
+- Explicación sobre experiencia en medicina preventiva y clínica.
+- Equipo enfocado en explicar cada paso al tutor.
+- Ambientes pensados para reducir estrés en perros y gatos.
+- Acompañamiento desde el ingreso hasta el alta.
+- Imágenes representativas de atención veterinaria real.
 
-## 🧞 Commands
+#### Sección Servicios:
+- Servicios principales ofrecidos:
+  - Consulta Veterinaria  
+  - Baño y Corte  
+  - Vacunación  
+  - Desparasitación  
+  - Esterilización  
+- Navegación clara y orientada a conversión con CTA “→”.
 
-All commands are run from the root of the project, from a terminal:
+#### Sección Clínica Veterinaria:
+- Servicios especializados:
+  - Ecografías  
+  - Controles  
+  - Diagnósticos  
+- Atención cercana y acompañamiento del tutor durante el procedimiento.
+- Equipos actualizados para diagnósticos precisos.
+- Entorno cómodo y seguro para reducir estrés.
+- Formulario de fecha de preferencia para abrir WhatsApp y coordinar cita.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+#### Navbar:
+- Navbar visible al subir.
+- Navbar escondida al bajar.
+- Scroll suave entre secciones.
+- Sticky cuando se supera la sección Hero.
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+#### Optimización Mobile:
+  tested_on:
+    - iPhone XR  
+    - Moto G  
+    - Resoluciones pequeñas (~720px)
+  improvements:
+    - Altura del hero.  
+    - Jerarquía visual y espaciados.  
+    - Tamaños de tipografía.  
+    - Optimización de imágenes.  
+    - Formulario adaptado a pantallas pequeñas.  
